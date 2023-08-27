@@ -16,7 +16,7 @@
         android:theme="@style/Theme.mdns_resolve"
         tools:targetApi="33">
         <activity
-            android:name="com.atb.mdns_resolve.MainActivity"
+            android:name="com.atb.mdns_resolve.ui.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.mdns_resolve">
