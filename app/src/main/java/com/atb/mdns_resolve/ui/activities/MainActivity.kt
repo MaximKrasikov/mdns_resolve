@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater)
@@ -45,8 +44,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
-
-var hostViewModel = HostViewModel()
 
 
 

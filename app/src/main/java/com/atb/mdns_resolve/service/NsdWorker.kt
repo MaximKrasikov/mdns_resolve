@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.atb.mdns_resolve.App
-import com.atb.mdns_resolve.ui.activities.hostViewModel
+import com.atb.mdns_resolve.model.HostViewModel
 import com.github.druk.rx2dnssd.BonjourService
 import com.github.druk.rx2dnssd.Rx2DnssdEmbedded
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,6 +17,7 @@ class NsdWorker constructor(
     workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams) {
 
+    var hostViewModel = HostViewModel()
     companion object {
         val TAG = NsdWorker::class.java.simpleName
     }
@@ -38,8 +39,8 @@ class NsdWorker constructor(
 
     private fun networkBrowserTask(): Disposable? {
         Log.i(TAG, "Entering networkBrowserTask()")
-        val mRxDnssd: Rx2DnssdEmbedded? = App.getRxDnssd()
-        val mDisposable: Disposable? = mRxDnssd!!.browse(
+        val mRxDnssd: Rx2DnssdEmbedded = App.getRxDnssd()
+        val mDisposable: Disposable? = mRxDnssd.browse(
             ServiceConstants.SERVICE_TYPE,
             ServiceConstants.DOMAIN_NAME,
         )

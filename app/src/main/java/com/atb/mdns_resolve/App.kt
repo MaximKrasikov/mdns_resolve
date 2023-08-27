@@ -8,8 +8,6 @@ import androidx.work.WorkManager
 import com.atb.mdns_resolve.service.NsdWorker
 import com.github.druk.rx2dnssd.Rx2DnssdEmbedded
 
-
-//@HiltAndroidApp
 class App : Application() {
 
     companion object {
