@@ -5,12 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.atb.mdns_resolve.service.HostRecord
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HostViewModel : ViewModel() {
-    val itemLiveData: LiveData<ArrayList<HostRecord>>
-        get() = items
+@HiltViewModel
+class HostViewModel @Inject constructor() : ViewModel() {
+    /*val itemLiveData: LiveData<ArrayList<HostRecord>>
+        get() = items*/
 
-    private val items = MutableLiveData<ArrayList<HostRecord>>()
+    //private val items = MutableLiveData<ArrayList<HostRecord>>()
+    private val _items = MutableLiveData<ArrayList<HostRecord>>()
+    val itemLiveData : LiveData<ArrayList<HostRecord>> = _items
+
     private val itemImpl = mutableListOf<HostRecord>()
 
     fun updateHostList(host: HostRecord) {
@@ -25,6 +31,6 @@ class HostViewModel : ViewModel() {
         //     return
         // }
         itemImpl.add(host)
-        items.postValue(itemImpl as ArrayList<HostRecord>?)
+        _items.value = itemImpl as ArrayList<HostRecord>? //.postValue(itemImpl as ArrayList<HostRecord>?)
     }
 }

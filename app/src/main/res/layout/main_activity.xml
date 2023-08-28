@@ -7,17 +7,27 @@
     android:layout_height="match_parent"
     tools:context="com.atb.mdns_resolve.ui.activities.MainActivity">
 
+    <TextView
+        android:id="@+id/hostsField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hosts:"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/fullNameField"
+        app:layout_constraintStart_toStartOf="@+id/fullNameField" />
+
 
     <TextView
         android:id="@+id/fullNameField"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="20dp"
         android:text="123"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReload"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,10 +35,10 @@
         android:id="@+id/buttonReload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="click_me"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameField" />
+        android:layout_marginBottom="30dp"
+        android:text="Find hosts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

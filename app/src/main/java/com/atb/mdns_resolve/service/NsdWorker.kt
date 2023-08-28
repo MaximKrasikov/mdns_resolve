@@ -4,8 +4,9 @@ import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.atb.mdns_resolve.App
 import com.atb.mdns_resolve.model.HostViewModel
+
+import com.atb.mdns_resolve.repository.HostScanRepository
 import com.github.druk.rx2dnssd.BonjourService
 import com.github.druk.rx2dnssd.Rx2DnssdEmbedded
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,10 +15,14 @@ import io.reactivex.schedulers.Schedulers
 
 class NsdWorker constructor(
     appContext: Context,
-    workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams) {
+    workerParams: WorkerParameters,
+) : CoroutineWorker(appContext, workerParams){
 
-    var hostViewModel = HostViewModel()
+    //var hostViewModel = HostViewModel()
+    //private val hostViewModel: HostViewModel by activityViewModels()
+
+    var hostUpdateService: HostScanRepository?= null
+
     companion object {
         val TAG = NsdWorker::class.java.simpleName
     }
@@ -39,7 +44,7 @@ class NsdWorker constructor(
 
     private fun networkBrowserTask(): Disposable? {
         Log.i(TAG, "Entering networkBrowserTask()")
-        val mRxDnssd: Rx2DnssdEmbedded = App.getRxDnssd()
+        val mRxDnssd: Rx2DnssdEmbedded = getRxDnssd()
         val mDisposable: Disposable? = mRxDnssd.browse(
             ServiceConstants.SERVICE_TYPE,
             ServiceConstants.DOMAIN_NAME,
@@ -66,6 +71,7 @@ class NsdWorker constructor(
         Log.e("mDisposable", mDisposable.toString())
         return mDisposable
     }
+
 }
 
 class ServiceConstants {

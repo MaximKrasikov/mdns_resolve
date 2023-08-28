@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="atb_main">#FF11345C</color>
+    <color name="atb_variant_1">#FFCBE9FC</color>
+    <color name="atb_variant_2">#FF5EA2D9</color>
+    <color name="atb_variant_3">#FF0369A6</color>
+    <color name="atb_variant_4">#FFA8AAAC</color>
+    <color name="atb_background">#FFF9F9F6</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +14,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="socket_status_close">#FF0000</color>
+    <color name="socket_status_open">#FF11345C</color>
+
+    <color name="colorPrimary">#2196f3</color>
+    <color name="colorPrimaryDark">#1976d2</color>
+    <color name="colorAccent">#FF6200EE</color>
+    <color name="iconsColor">#bdbdbd</color>
 </resources>
