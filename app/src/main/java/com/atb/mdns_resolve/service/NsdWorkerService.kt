@@ -1,6 +1,5 @@
 package com.atb.mdns_resolve.service
 
-import android.content.Context
 import android.util.Log
 import com.atb.mdns_resolve.repository.HostScanClient
 import com.github.druk.rx2dnssd.BonjourService
@@ -10,13 +9,11 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class NsdWorkerService constructor(
-    appContext: Context,
     _hostScanClient: HostScanClient
 ) {
-
     private var hostScanClient: HostScanClient?= null
     companion object {
-        val TAG = NsdWorker::class.java.simpleName
+        val TAG = NsdWorkerService::class.java.simpleName
     }
     init {
         hostScanClient= _hostScanClient

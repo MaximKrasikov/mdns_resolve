@@ -15,18 +15,10 @@ class NsdWorker constructor(
     appContext: Context,
     workerParams: WorkerParameters
 ) : CoroutineWorker(appContext, workerParams){
-
-    //var hostViewModel = HostViewModel()
-    //private val hostViewModel: HostViewModel by activityViewModels()
-
     var hostScanClient: HostScanClient?=null
-
     companion object {
         val TAG = NsdWorker::class.java.simpleName
     }
-    /*init {
-        hostScanClient = _hostScanClient
-    }*/
 
     override suspend fun doWork(): Result {
         return try {

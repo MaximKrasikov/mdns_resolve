@@ -44,20 +44,20 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        hostViewModel.itemLiveData.observe(this) { list->
-            if (list != null) {
-              val hostRecord: HostRecord =hostViewModel.getHostRecordByNameFromList("ATB2100_Krasikov")
-
+        hostViewModel.itemLiveData.observe(this) { list ->
+            if (list.size != 0) {
+                val hostRecord: HostRecord =
+                    hostViewModel.getHostRecordByNameFromList("ATB2100_Krasikov")
                 runOnUiThread {
-                    binding.fullNameField.text = hostRecord.toString()//hostRecord.hostName+ " IP: " + hostRecord.ip4addr
+                    binding.fullNameField.text =
+                        hostRecord.toString()//hostRecord.hostName+ " IP: " + hostRecord.ip4addr
                 }
             } else
                 binding.fullNameField.text = "Сетей не нашлось"
         }
     }
-
     fun startNsdWorker() {
-        NsdWorkerService(applicationContext,hostScanClient!!).startScan()
+        NsdWorkerService(hostScanClient!!).startScan()
     }
 }
 

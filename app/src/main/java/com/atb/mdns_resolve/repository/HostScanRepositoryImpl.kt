@@ -24,12 +24,9 @@ class HostScanRepositoryImpl constructor(context: Context) : HostScanRepository 
         // }
         itemImpl.add(host)
     }
-
     override fun getHostMutableList(): MutableList<HostRecord> {
         return itemImpl
     }
-
-
     override fun getRxDnssd(): Rx2DnssdEmbedded {
         return mRxdnssd
     }
