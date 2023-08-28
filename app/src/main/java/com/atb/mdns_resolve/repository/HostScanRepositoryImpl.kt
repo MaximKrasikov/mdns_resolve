@@ -5,7 +5,6 @@ import android.util.Log
 import com.atb.mdns_resolve.service.HostRecord
 import com.github.druk.rx2dnssd.Rx2DnssdEmbedded
 
-
 class HostScanRepositoryImpl constructor(context: Context) : HostScanRepository {
 
     var mRxdnssd : Rx2DnssdEmbedded = Rx2DnssdEmbedded(context)

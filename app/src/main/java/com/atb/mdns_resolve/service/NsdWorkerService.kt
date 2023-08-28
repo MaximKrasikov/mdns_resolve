@@ -23,7 +23,7 @@ class NsdWorkerService constructor(
     }
 
     private fun networkBrowserTask(): Disposable? {
-        Log.i(NsdWorker.TAG, "Entering networkBrowserTask()")
+        Log.i(NsdWorkerService.TAG, "Entering networkBrowserTask()")
         val mRxDnssd: Rx2DnssdEmbedded = hostScanClient?.getRxDnssd()!!
         val mDisposable: Disposable? = mRxDnssd.browse(
             ServiceConstants.SERVICE_TYPE,
@@ -35,20 +35,20 @@ class NsdWorkerService constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ service: BonjourService ->
                 if (!service.isLost && service.regType.startsWith("_http") && service.inet4Address != null) {
-                    Log.i(NsdWorker.TAG, "App IP New: " + service.inet4Address.toString())
-                    Log.i(NsdWorker.TAG, "App Nsd Service: $service")
+                    Log.i(NsdWorkerService.TAG, "App IP New: " + service.inet4Address.toString())
+                    Log.i(NsdWorkerService.TAG, "App Nsd Service: $service")
                     val hostname: String = if (service.hostname == null) "Not known" else service.hostname!!
                     //hostViewModel.updateHostList(HostRecord(service.serviceName, hostname, service.inet4Address.toString()))
                     hostScanClient?.updateHost(HostRecord(service.serviceName, hostname, service.inet4Address.toString()))
                 } else {
-                    Log.i(NsdWorker.TAG, "Other Nsd Service: $service")
+                    Log.i(NsdWorkerService.TAG, "Other Nsd Service: $service")
                 }
             },
                 { throwable: Throwable? ->
-                    Log.e(NsdWorker.TAG, "Error: ", throwable)
+                    Log.e(NsdWorkerService.TAG, "Error: ", throwable)
                 })
 
-        Log.i(NsdWorker.TAG, "Leaving networkBrowserTask()")
+        Log.i(NsdWorkerService.TAG, "Leaving networkBrowserTask()")
 
         Log.e("mDisposable", mDisposable.toString())
         return mDisposable
