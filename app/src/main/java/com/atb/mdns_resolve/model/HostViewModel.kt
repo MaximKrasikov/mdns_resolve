@@ -1,7 +1,6 @@
 package com.atb.mdns_resolve.model
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,24 +10,24 @@ import com.atb.mdns_resolve.service.HostRecord
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.Optional
 import javax.inject.Inject
-import kotlin.streams.toList
 
 @HiltViewModel
-class HostViewModel @Inject constructor() : ViewModel(){
+class HostViewModel @Inject constructor() : ViewModel() {
 
     private val _items = MutableLiveData<ArrayList<HostRecord>>()
-    val itemLiveData : LiveData<ArrayList<HostRecord>> = _items
+    val itemLiveData: LiveData<ArrayList<HostRecord>> = _items
 
-    var hostScanClient : HostScanClient?=null
+    var hostScanClient: HostScanClient? = null
 
-    fun updateHostList(){
-        if(hostScanClient?.getHostList()?.size!=0)
-        _items.value =  hostScanClient?.getHostList() as ArrayList<HostRecord>?
+    fun updateHostList() {
+        if (hostScanClient?.getHostList()?.size != 0)
+            _items.value = hostScanClient?.getHostList() as ArrayList<HostRecord>?
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun getHostRecordByNameFromList(name : String): HostRecord{
-       val hostRecord: Optional<HostRecord>? = itemLiveData.value?.stream()?.filter{it.serviceName.equals(name) }?.findFirst()
+    fun getHostRecordByNameFromList(name: String): HostRecord {
+        val hostRecord: Optional<HostRecord>? =
+            itemLiveData.value?.stream()?.filter { it.serviceName.equals(name) }?.findFirst()
         return hostRecord!!.get()
     }
 }
