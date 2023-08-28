@@ -5,6 +5,7 @@ import com.github.druk.rx2dnssd.Rx2DnssdEmbedded
 
 interface HostScanRepository {
     fun updateHostMutableList(host: HostRecord)
+    fun getHostMutableList() : MutableList<HostRecord>
 
     fun getRxDnssd() : Rx2DnssdEmbedded
 }
