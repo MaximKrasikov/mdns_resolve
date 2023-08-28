@@ -22,6 +22,7 @@ class HostViewModel @Inject constructor() : ViewModel(){
     var hostScanClient : HostScanClient?=null
 
     fun updateHostList(){
+        if(hostScanClient?.getHostList()?.size!=0)
         _items.value =  hostScanClient?.getHostList() as ArrayList<HostRecord>?
     }
 
