@@ -47,8 +47,9 @@ class MainActivity : AppCompatActivity() {
         hostViewModel.itemLiveData.observe(this) { list->
             if (list != null) {
               val hostRecord: HostRecord =hostViewModel.getHostRecordByNameFromList("ATB2100_Krasikov")
+
                 runOnUiThread {
-                    binding.fullNameField.text = hostRecord.hostName+ " IP: " + hostRecord.ip4addr
+                    binding.fullNameField.text = hostRecord.toString()//hostRecord.hostName+ " IP: " + hostRecord.ip4addr
                 }
             } else
                 binding.fullNameField.text = "Сетей не нашлось"

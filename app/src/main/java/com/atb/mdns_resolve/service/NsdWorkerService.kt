@@ -70,4 +70,6 @@ data class HostRecord(
     val serviceName: String,
     val hostName: String,
     val ip4addr: String
-)
+){
+    override fun toString(): String = " SN: $serviceName HN: $hostName IP: $ip4addr\n"
+}
